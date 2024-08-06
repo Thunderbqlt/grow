@@ -7,16 +7,9 @@ export default function App() {
     <View className="flex-1 items-center justify-center bg-white">
       <Text className="text-3xl">Welcome to Grow!</Text>
       <StatusBar style="auto" />  
-      <Link href="/about" style={{ color: 'blue'}}>What is Grow about?</Link>
+      <Link href="/home" style={{ color: 'blue'}}>Start with Grow now!</Link>
     </View>
   );  
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
