@@ -3,6 +3,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useEffect } from 'react';
 import { config, databases } from '../../lib/appwrite.js';
+import CustomButton from '../../components/CustomButton';
 
 const Plots = () => {
   const [suggestions, setSuggestions] = useState([]);
@@ -33,6 +34,11 @@ const Plots = () => {
         onChangeText={handleChangeText}
 
       />
+      <CustomButton 
+          title="Add"
+          handlePress={() => router.push('/home')}
+          containerStyles="w-[80px] h-[20px] mt-7"
+        />
       <Text>You typed: {text}</Text>
       <FlatList
         data={suggestions}
