@@ -25,6 +25,19 @@ const Plots = () => {
     setText(input);
   };
 
+  const handleAddPress = async () => {
+      await databases.createDocument(
+        config.databaseId,
+        config.plotCollectionId,
+        'unique()', 
+        { plant: text } 
+      );
+      getSuggestions();
+      setText('');
+    }
+
+ 
+
   return (
     <SafeAreaView>
       <Text>Plots</Text>
@@ -36,15 +49,15 @@ const Plots = () => {
       />
       <CustomButton 
           title="Add"
-          handlePress={() => router.push('/home')}
+          handlePress={handleAddPress}
           containerStyles="w-[80px] h-[20px] mt-7"
         />
-      <Text>You typed: {text}</Text>
-      <FlatList
+      <Text>This plot contains:</Text>
+      <FlatList className="h-screen"
         data={suggestions}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
-          <View>
+          <View className="mt-5">
             <Text>{item.plant}</Text>
           </View>
         )}
