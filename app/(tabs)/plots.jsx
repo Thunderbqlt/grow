@@ -7,6 +7,14 @@ import CustomButton from '../../components/CustomButton';
 import { Picker } from '@react-native-picker/picker';
 
 const Plots = () => {
+  const [selectedPlot, setSelectedPlot] = useState('66c123d8000ccb68ad94');
+  useEffect(() => {
+    if (selectedPlot) {
+      getSuggestions();
+    }
+  }, [selectedPlot]);
+
+
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
@@ -14,7 +22,7 @@ const Plots = () => {
   }, []);
 
   async function getSuggestions() {
-    const res = await databases.listDocuments(config.databaseId, config.plotCollectionId);
+    const res = await databases.listDocuments(config.databaseId, selectedPlot);
 
     console.log(res); 
     setSuggestions(res.documents);
@@ -29,14 +37,13 @@ const Plots = () => {
   const handleAddPress = async () => {
       await databases.createDocument(
         config.databaseId,
-        config.plotCollectionId,
+        selectedPlot,
         'unique()', 
         { plant: text } 
       );
       getSuggestions();
       setText('');
     }
-    const [selectedPlot, setSelectedPlot] = useState();
 
 
  
@@ -49,8 +56,9 @@ const Plots = () => {
           onValueChange={(itemValue, itemIndex) =>
             setSelectedPlot(itemValue)
           }>
-          <Picker.Item label="Plot 1" value="plot 1" />
-          <Picker.Item label="Plot 2" value="plot 2" />
+          <Picker.Item label="Plot 1" value="66c123d8000ccb68ad94" />
+          <Picker.Item label="Plot 2" value="66cd0e6700146d302820" />
+          <Picker.Item label="Plot 3" value="66cd0e870022891b18de" />
         </Picker>
       <TextInput
         placeholder='What is planted here?'
