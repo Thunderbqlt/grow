@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useEffect } from 'react';
 import { config, databases } from '../../lib/appwrite.js';
 import CustomButton from '../../components/CustomButton';
+import { Picker } from '@react-native-picker/picker';
 
 const Plots = () => {
   const [suggestions, setSuggestions] = useState([]);
@@ -35,12 +36,22 @@ const Plots = () => {
       getSuggestions();
       setText('');
     }
+    const [selectedPlot, setSelectedPlot] = useState();
+
 
  
 
   return (
     <SafeAreaView>
       <Text>Plots</Text>
+        <Picker
+          selectedValue={selectedPlot}
+          onValueChange={(itemValue, itemIndex) =>
+            setSelectedPlot(itemValue)
+          }>
+          <Picker.Item label="Plot 1" value="plot 1" />
+          <Picker.Item label="Plot 2" value="plot 2" />
+        </Picker>
       <TextInput
         placeholder='What is planted here?'
         value={text}
