@@ -7,7 +7,7 @@ import CustomButton from '../../components/CustomButton';
 import { Picker } from '@react-native-picker/picker';
 
 const Plots = () => {
-  const [selectedPlot, setSelectedPlot] = useState('66c123d8000ccb68ad94');
+  const [selectedPlot, setSelectedPlot] = useState("66c123d8000ccb68ad94");
   useEffect(() => {
     if (selectedPlot) {
       getSuggestions();
@@ -50,7 +50,6 @@ const Plots = () => {
 
   return (
     <SafeAreaView>
-      <Text>Plots</Text>
         <Picker
           selectedValue={selectedPlot}
           onValueChange={(itemValue, itemIndex) =>
@@ -60,18 +59,21 @@ const Plots = () => {
           <Picker.Item label="Plot 2" value="66cd0e6700146d302820" />
           <Picker.Item label="Plot 3" value="66cd0e870022891b18de" />
         </Picker>
-      <TextInput
+      <TextInput className="text-2xl text-black text-center font-psemibold"
         placeholder='What is planted here?'
         value={text}
         onChangeText={handleChangeText}
+        
 
       />
+      <View className="justify-center items-center">
       <CustomButton 
           title="Add"
           handlePress={handleAddPress}
           containerStyles="w-[80px] h-[20px] mt-7"
         />
       <Text>This plot contains:</Text>
+      
       <FlatList className="h-screen"
         data={suggestions}
         keyExtractor={(item) => item.$id}
@@ -81,6 +83,7 @@ const Plots = () => {
           </View>
         )}
       />
+      </View>
     </SafeAreaView>
   )
 }

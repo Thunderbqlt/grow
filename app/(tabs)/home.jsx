@@ -1,11 +1,36 @@
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView, Image } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { images } from '../../constants';
+import CustomButton from '../../components/CustomButton';
+import {router} from 'expo-router'
+
 
 const Home = () => {
   return (
     <SafeAreaView>
-      <Text>Home</Text>
+      <ScrollView className="px-4 my-6">
+        <View className="w-full justify-center items-center h-full px-4">
+        <Text className="text-2xl text-black text-center font-psemibold">SELECT A PLOT TO VIEW IT</Text>
+        <CustomButton 
+          title="Plot 1"
+          handlePress={() => router.push('/plots')}
+          containerStyles="w-[200px] mt-7"
+        />
+        <CustomButton 
+          title="Plot 2"
+          handlePress={() => router.push('/plots')}
+          containerStyles="w-[200px] mt-7"
+        />
+        <CustomButton 
+          title="Plot 3"
+          handlePress={() => router.push('/plots')}
+          containerStyles="w-[200px] mt-7"
+        />
+        
+
+        </View>
+      </ScrollView>
     </SafeAreaView>
   )
 }
