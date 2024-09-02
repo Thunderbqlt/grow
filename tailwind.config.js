@@ -3,6 +3,7 @@ module.exports = {
   content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      //Colours that I have defined for use with Tailwind CSS
       colors: {
         primary: '#FFFFFF',
         black: {
@@ -11,8 +12,11 @@ module.exports = {
           200: "#232533",
         },
         secondary: '#6AE364',
-        accent: '#BBF3B0',  
+        accent: '#BBF3B0',
+        brown: '#6E3501',
+        lightbrown: '#944F0F',   
       },
+      //Fonts that I have imported for use with Tailwind CSS
       fontFamily: {
         pthin: ["Poppins-Thin", "sans-serif"],
         pextralight: ["Poppins-ExtraLight", "sans-serif"],

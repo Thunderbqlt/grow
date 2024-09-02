@@ -22,8 +22,8 @@ const TabIcon = ({ icon, color, name, focused }) => {
 const TabsLayout = () => {
   return (
     <>
-      <Tabs
-        screenOptions={{
+      <Tabs 
+        screenOptions={{ //Styling for navigation bar
           tabBarShowLabel: false,
           tabBarActiveTintColor: '#6AE364',
           tabBarInactiveTintColor: '#CDCDE0',
@@ -35,13 +35,13 @@ const TabsLayout = () => {
           }
         }}
       >
-        <Tabs.Screen
+        <Tabs.Screen //Home page screen
           name="home"
           options={{
             title: 'Home',
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
-              <TabIcon 
+              <TabIcon //Home page icon styling variables
                 icon={icons.home}
                 color={color}
                 name="Home"
@@ -50,13 +50,13 @@ const TabsLayout = () => {
             )
           }}
         />
-        <Tabs.Screen
+        <Tabs.Screen //Plots page screen
           name="plots"
           options={{
             title: 'Plots',
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
-              <TabIcon 
+              <TabIcon //Plots page icon styling variables
                 icon={icons.plus}
                 color={color}
                 name="Plots"
@@ -65,13 +65,13 @@ const TabsLayout = () => {
             )
           }}
         />
-        <Tabs.Screen
+        <Tabs.Screen //About page screen
           name="about"
           options={{
             title: 'About',
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
-              <TabIcon 
+              <TabIcon //About page icon styling variables
                 icon={icons.profile}
                 color={color}
                 name="About"

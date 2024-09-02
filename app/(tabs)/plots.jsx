@@ -5,8 +5,10 @@ import { useState, useEffect } from 'react';
 import { config, databases } from '../../lib/appwrite.js';
 import CustomButton from '../../components/CustomButton';
 import { Picker } from '@react-native-picker/picker';
+import { useRouter } from 'expo-router';
 
 const Plots = () => {
+
   const [selectedPlot, setSelectedPlot] = useState("66c123d8000ccb68ad94");
   useEffect(() => {
     if (selectedPlot) {
@@ -70,7 +72,7 @@ const Plots = () => {
       <CustomButton 
           title="Add"
           handlePress={handleAddPress}
-          containerStyles="w-[80px] h-[20px] mt-7"
+          containerStyles="w-[80px] h-[20px] mt-7 bg-secondary"
         />
       <Text>This plot contains:</Text>
       

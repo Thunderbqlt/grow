@@ -12,20 +12,24 @@ const Home = () => {
       <ScrollView className="px-4 my-6">
         <View className="w-full justify-center items-center h-full px-4">
         <Text className="text-2xl text-black text-center font-psemibold">SELECT A PLOT TO VIEW IT</Text>
-        <CustomButton 
+        
+        <CustomButton //Button leading to the plots page
           title="Plot 1"
           handlePress={() => router.push('/plots')}
-          containerStyles="w-[200px] mt-7"
+          containerStyles="w-[200px] mt-7 bg-lightbrown"
+          textStyles="text-black"
         />
-        <CustomButton 
+        <CustomButton //Button leading to the plots page
           title="Plot 2"
           handlePress={() => router.push('/plots')}
-          containerStyles="w-[200px] mt-7"
+          containerStyles="w-[200px] mt-7 bg-lightbrown"
+          textStyles="text-black"
         />
-        <CustomButton 
+        <CustomButton //Button leading to the plots page
           title="Plot 3"
           handlePress={() => router.push('/plots')}
-          containerStyles="w-[200px] mt-7"
+          containerStyles="w-[200px] mt-7 bg-lightbrown"
+          textStyles="text-black"
         />
         
 
