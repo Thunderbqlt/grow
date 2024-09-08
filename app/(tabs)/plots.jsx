@@ -1,33 +1,33 @@
-import { StyleSheet, Text, View, FlatList, TextInput } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TextInput} from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useEffect } from 'react';
 import { config, databases } from '../../lib/appwrite.js';
 import CustomButton from '../../components/CustomButton';
 import { Picker } from '@react-native-picker/picker';
-import { useRouter } from 'expo-router';
+import Checkbox from 'expo-checkbox';
 
 const Plots = () => {
   //Sets the default selected plot to Plot 1
   const [selectedPlot, setSelectedPlot] = useState("66c123d8000ccb68ad94");
   useEffect(() => {
     if (selectedPlot) {
-      getSuggestions();
+      getPlantInfo();
     }
   }, [selectedPlot]);
 
 
-  const [suggestions, setSuggestions] = useState([]);
+  const [plantInfo, setPlantInfo] = useState([]);
 
   useEffect(() => {
-    getSuggestions();
+    getPlantInfo();
   }, []);
   //Gathers the information for each plot
-  async function getSuggestions() {
+  async function getPlantInfo() {
     const res = await databases.listDocuments(config.databaseId, selectedPlot);
 
     console.log(res); 
-    setSuggestions(res.documents);
+    setPlantInfo(res.documents);
   }
 
   const [text, setText] = useState('');
@@ -50,17 +50,17 @@ const Plots = () => {
           info: notes
          } 
       );
-      getSuggestions();
+      getPlantInfo();
       //Clears the input view after adding the data
       setText('');
       setNote('');
     }
-
-
+  //Handles the checkbox's state
+  const [isChecked, setChecked] = useState(false);
  
-
   return (
     <SafeAreaView>
+        
         <Picker //Allows you to select which plot you want to view
           selectedValue={selectedPlot}
           onValueChange={(itemValue, itemIndex) =>
@@ -91,14 +91,19 @@ const Plots = () => {
       <Text>This plot contains:</Text>
       
       <FlatList //List to display the plots plant information
-        className="h-screen"
-        data={suggestions}
+        className="h-[300px]"
+        data={plantInfo}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
           <View className="mt-5">
             <Text>{item.plant}</Text>
             <Text>{item.info}</Text>
-          </View>
+            <Text>Harvested: <Checkbox
+              value={isChecked}
+              onValueChange={setChecked}
+              color={isChecked ? '#6AE364' : undefined}
+            /></Text>
+          </View>          
         )}
       />
       </View>
