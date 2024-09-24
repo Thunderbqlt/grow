@@ -57,6 +57,17 @@ const Plots = () => {
     }
   //Handles the checkbox's state
   const [isChecked, setChecked] = useState(false);
+
+  useEffect(() => {
+    getCheckBoxState();
+  }, []);
+
+  async function getCheckBoxState() {
+    const res = await databases.listDocuments(config.databaseId, selectedPlot);
+    setChecked(res.documents);
+  }
+
+
  
   return (
     <SafeAreaView>

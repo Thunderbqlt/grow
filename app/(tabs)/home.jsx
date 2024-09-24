@@ -16,19 +16,19 @@ const Home = () => {
         <CustomButton //Button leading to the plots page
           title="Plot 1"
           handlePress={() => router.push('/plots')}
-          containerStyles="w-[200px] mt-7 bg-lightbrown"
+          containerStyles="w-[200px] mt-7 bg-lightbrown border-8 border-brown"
           textStyles="text-black"
         />
         <CustomButton //Button leading to the plots page
           title="Plot 2"
           handlePress={() => router.push('/plots')}
-          containerStyles="w-[200px] mt-7 bg-lightbrown"
+          containerStyles="w-[200px] mt-7 bg-lightbrown border-8 border-brown"
           textStyles="text-black"
         />
         <CustomButton //Button leading to the plots page
           title="Plot 3"
           handlePress={() => router.push('/plots')}
-          containerStyles="w-[200px] mt-7 bg-lightbrown"
+          containerStyles="w-[200px] mt-7 bg-lightbrown border-8 border-brown"
           textStyles="text-black"
         />
         
