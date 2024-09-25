@@ -8,6 +8,7 @@ import {router} from 'expo-router'
 
 const Home = () => {
   return (
+    
     <SafeAreaView>
       <ScrollView className="px-4 my-6">
         <View className="w-full justify-center items-center h-full px-4">
@@ -16,19 +17,19 @@ const Home = () => {
         <CustomButton //Button leading to the plots page
           title="Plot 1"
           handlePress={() => router.push('/plots')}
-          containerStyles="w-[200px] mt-7 bg-lightbrown border-8 border-brown"
+          containerStyles="w-[200px] mt-7 bg-brownlight border-8 border-brown"
           textStyles="text-black"
         />
         <CustomButton //Button leading to the plots page
           title="Plot 2"
           handlePress={() => router.push('/plots')}
-          containerStyles="w-[200px] mt-7 bg-lightbrown border-8 border-brown"
+          containerStyles="w-[200px] mt-7 bg-brownlight border-8 border-brown"
           textStyles="text-black"
         />
         <CustomButton //Button leading to the plots page
           title="Plot 3"
           handlePress={() => router.push('/plots')}
-          containerStyles="w-[200px] mt-7 bg-lightbrown border-8 border-brown"
+          containerStyles="w-[200px] mt-7 bg-brownlight border-8 border-brown"
           textStyles="text-black"
         />
         

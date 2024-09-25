@@ -14,7 +14,7 @@ module.exports = {
         secondary: '#6AE364',
         accent: '#BBF3B0',
         brown: '#6E3501',
-        lightbrown: '#944F0F',   
+        brownlight: '#BB6516',   
       },
       //Fonts that I have imported for use with Tailwind CSS
       fontFamily: {
