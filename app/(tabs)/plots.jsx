@@ -38,6 +38,7 @@ const Plots = () => {
       setText(input);
     }
     else {
+      //Sends a alert to the user if the string they input is too long
       Alert.alert ('Character limit of 50 has been reached. Try shortening your plant name.')
     }
     
@@ -45,10 +46,24 @@ const Plots = () => {
   };
   //Updates the note input to display the text being input
   const handleChangeNote = (input) => {
-    setNote(input);
+    if (input.length <= noteMaxLength) {
+      setNote(input);
+    }
+    else {
+      //Sends a alert to the user if the string they input is too long
+      Alert.alert ('Character limit of 200 has been reached. Try shortening your extra note.')
+    }
   };
   //Handles adding the data input to the database by creating a new document
   const handleAddPress = async () => {
+      //Checks if the text input is empty
+      if (text.trim() === '')
+      {
+        Alert.alert ('The plant name must be more than 0 characters long. Please add a name.')
+        //Aborts the function if the text input is empty
+        return;
+      }
+      //Adds a document to the database with the information from the text inputs
       await databases.createDocument(
         config.databaseId,
         selectedPlot,
@@ -75,6 +90,7 @@ const Plots = () => {
   }
 
   const plantMaxLength= 50;
+  const noteMaxLength=200;
  
   return (
     <SafeAreaView>
@@ -100,6 +116,7 @@ const Plots = () => {
         placeholder='Any extra notes about this plant?'
         value={notes}
         onChangeText={handleChangeNote}
+        maxLength={noteMaxLength + 1}
       />
       <View className="justify-center items-center">
       <CustomButton //Button which adds the input data to the database
