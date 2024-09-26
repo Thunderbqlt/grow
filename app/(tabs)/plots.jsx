@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, TextInput} from 'react-native';
+import { StyleSheet, Text, View, FlatList, TextInput, Alert} from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState, useEffect } from 'react';
@@ -34,7 +34,14 @@ const Plots = () => {
   const [notes, setNote] = useState('');
   //Updates the plant name input to display the text being input
   const handleChangeText = (input) => {
-    setText(input);
+    if (input.length <= plantMaxLength) {
+      setText(input);
+    }
+    else {
+      Alert.alert ('Character limit of 50 has been reached. Try shortening your plant name.')
+    }
+    
+
   };
   //Updates the note input to display the text being input
   const handleChangeNote = (input) => {
@@ -67,7 +74,7 @@ const Plots = () => {
     setChecked(res.documents);
   }
 
-
+  const plantMaxLength= 50;
  
   return (
     <SafeAreaView>
@@ -82,13 +89,14 @@ const Plots = () => {
           <Picker.Item label="Plot 3" value="66cd0e870022891b18de" />
         </Picker>
       <TextInput //Input of the new plants name
-        className="text-2xl text-black text-center font-psemibold"
+        className="text-2xl text-black text-center font-psemibold border-2"
         placeholder='What is planted here?'
         value={text}
         onChangeText={handleChangeText}
-      />
+        maxLength={plantMaxLength + 1}
+      />  
       <TextInput //Input for notes about the plant
-        className="text-2xl text-black text-center font-psemibold mt-3"
+        className="text-2xl text-black text-center font-psemibold mt-3 border-2"
         placeholder='Any extra notes about this plant?'
         value={notes}
         onChangeText={handleChangeNote}
