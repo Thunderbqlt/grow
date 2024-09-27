@@ -105,8 +105,9 @@ const Plots = () => {
           <Picker.Item label="Plot 3" value="66cd0e870022891b18de" />
         </Picker>
       <TextInput //Input of the new plants name
-        className="text-2xl text-black text-center font-psemibold border-2"
+        className="text-2xl text-black text-center font-psemibold border-2 "
         placeholder='What is planted here?'
+        placeholderTextColor='#6F6F6F'
         value={text}
         onChangeText={handleChangeText}
         maxLength={plantMaxLength + 1}
@@ -114,6 +115,7 @@ const Plots = () => {
       <TextInput //Input for notes about the plant
         className="text-2xl text-black text-center font-psemibold mt-3 border-2"
         placeholder='Any extra notes about this plant?'
+        placeholderTextColor='#6F6F6F'
         value={notes}
         onChangeText={handleChangeNote}
         maxLength={noteMaxLength + 1}
