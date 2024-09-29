@@ -63,13 +63,14 @@ const Plots = () => {
         //Aborts the function if the text input is empty
         return;
       }
-      //Adds a document to the database with the information from the text inputs
+      //Adds a document to the database with the information from the text inputs and sets harvested to false as default
       await databases.createDocument(
         config.databaseId,
         selectedPlot,
         'unique()', 
         { plant: text,
-          info: notes
+          info: notes,
+          harvested: false
          } 
       );
       getPlantInfo();
@@ -77,17 +78,16 @@ const Plots = () => {
       setText('');
       setNote('');
     }
-  //Handles the checkbox's state
-  const [isChecked, setChecked] = useState(false);
+  //Changes the corresponding checkbox of the plant which has its checkbox toggled
+  const setCheckbox = async (item) => {
+    const newValue = !item.harvested;
+    await databases.updateDocument(config.databaseId, selectedPlot, item.$id, { harvested: newValue});
+    setPlantInfo((prev) =>
+      //Sets the harvested boolean value to the opposite of the current value
+      prev.map((plant) => (plant.$id === item.$id ? {...plant, harvested: newValue } :plant))
 
-  useEffect(() => {
-    getCheckBoxState();
-  }, []);
-
-  async function getCheckBoxState() {
-    const res = await databases.listDocuments(config.databaseId, selectedPlot);
-    setChecked(res.documents);
-  }
+    );
+  };
 
   const plantMaxLength= 50;
   const noteMaxLength=200;
@@ -137,9 +137,9 @@ const Plots = () => {
             <Text>{item.plant}</Text>
             <Text>{item.info}</Text>
             <Text>Harvested: <Checkbox
-              value={isChecked}
-              onValueChange={setChecked}
-              color={isChecked ? '#6AE364' : undefined}
+              value={item.harvested}
+              onValueChange={() => setCheckbox(item)}
+              color={item.harvested ? '#6AE364' : undefined}
             /></Text>
           </View>          
         )}
