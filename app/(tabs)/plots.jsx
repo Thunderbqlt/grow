@@ -7,6 +7,12 @@ import CustomButton from '../../components/CustomButton';
 import { Picker } from '@react-native-picker/picker';
 import Checkbox from 'expo-checkbox';
 
+const plantMaxLength= 50;
+const noteMaxLength=200;
+const [text, setText] = useState('');
+const [notes, setNote] = useState('');
+const [plantInfo, setPlantInfo] = useState([]);
+
 const Plots = () => {
   //Sets the default selected plot to Plot 1
   const [selectedPlot, setSelectedPlot] = useState("66c123d8000ccb68ad94");
@@ -15,9 +21,6 @@ const Plots = () => {
       getPlantInfo();
     }
   }, [selectedPlot]);
-
-
-  const [plantInfo, setPlantInfo] = useState([]);
 
   useEffect(() => {
     getPlantInfo();
@@ -30,8 +33,7 @@ const Plots = () => {
     setPlantInfo(res.documents);
   }
 
-  const [text, setText] = useState('');
-  const [notes, setNote] = useState('');
+  
   //Updates the plant name input to display the text being input
   const handleChangeText = (input) => {
     if (input.length <= plantMaxLength) {
@@ -89,9 +91,6 @@ const Plots = () => {
     );
   };
 
-  const plantMaxLength= 50;
-  const noteMaxLength=200;
- 
   return (
     <SafeAreaView>
         
